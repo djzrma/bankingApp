@@ -8,4 +8,27 @@
     <string name="signInButton">Sign In</string>
     <string name="forgotPasswordTextView">Forgot Password?</string>
     <string name="createAnAccountTextView">Create an Account</string>
+    <string name="appNameTextView">Local Area Network Navigator</string>
+    <string name="toggleButton" />
+    <string name="nameTextFieldHint">Please Enter a Name</string>
+    <string name="nameTextField" />
+    <string name="descriptionTextFieldHint">Enter a Description</string>
+    <string name="descriptionTextField" />
+    <string name="addressTextFieldHint">Enter an address</string>
+    <string name="addressTextField" />
+    <string name="cityTextFieldHint">City</string>
+    <string name="cityTextField" />
+    <string name="stateTextFieldHint">State</string>
+    <string name="stateTextField" />
+    <string name="locationCodeTextFieldHint">Location</string>
+    <string name="locationCodeTextField" />
+    <string name="locationPhoneTextFieldHint">Location Phone</string>
+    <string name="locationPhoneTextField" />
+    <string name="locationManagerTextFieldHint">Location Manager</string>
+    <string name="locationManagerTextField" />
+    <string name="dateOfConfigurationTextFieldHint">Date of Configuration</string>
+    <string name="dateOfConfigurationTextField" />
+    <string name="zipCodeTextFieldHint">Zip Code</string>
+    <string name="zipCodeTextField" />
+    <string name="activitySwitchConfirmation" />
 </resources>

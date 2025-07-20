@@ -12,7 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BankingApp">
         <activity
-            android:name=".MainActivity"
+            android:name=".MainMenu"
+            android:exported="false" />
+        <activity
+            android:name=".Accounts"
+            android:exported="false" />
+        <activity
+            android:name=".Settings"
+            android:exported="false" />
+        <activity
+            android:name=".LoginPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
