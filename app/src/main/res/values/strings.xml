@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">bankingApp</string>
+    <string name="bankNameTitle">Banking App</string>
+    <string name="loginTextField" />
+    <string name="passwordTextField" />
+    <string name="usernameTextView">Username</string>
+    <string name="passwordTextView">Password</string>
+    <string name="signInButton">Sign In</string>
+    <string name="forgotPasswordTextView">Forgot Password?</string>
+    <string name="createAnAccountTextView">Create an Account</string>
 </resources>
