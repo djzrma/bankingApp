@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,5 +42,13 @@ public class LoginPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    //method to display activity switch confirmation message
+    private void activitySwitchMessage(){
+        Intent intent = getIntent();
+        TextView message = findViewById(R.id.activitySwitchConfirmation);
+        String tempString = intent.getStringExtra("loginMessage");
+        message.setText(tempString);
     }
 }

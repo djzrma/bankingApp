@@ -7,6 +7,263 @@
     android:layout_height="match_parent"
     tools:context=".Accounts">
 
+
+    <LinearLayout
+        android:id="@+id/accountsTitleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/accountInfoScrollView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/accountsTitleTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#C95527B0"
+                android:gravity="center"
+                android:text="@string/accountsTitleTextView"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/accountInfoScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButtonLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountsTitleLayout">
+
+        <LinearLayout
+            android:id="@+id/accountsInfoLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/accountsNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:textSize="16dp"
+                    android:text="@string/accountsNameTextView"
+                    app:layout_constraintBottom_toTopOf="@+id/accountsFirstNameTextField"
+                    app:layout_constraintStart_toStartOf="@+id/accountsFirstNameTextField"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/accountsFirstNameTextField"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:hint="@string/accountFirstNameHint"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:text="@string/accountFirstNameTextField"
+                    app:layout_constraintEnd_toStartOf="@+id/accountsMiddleInitialTextField"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/accountsNameTextView"
+                    tools:ignore="TextContrastCheck" />
+
+                <EditText
+                    android:id="@+id/accountsMiddleInitialTextField"
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:hint="@string/accountsMiddleInitialHint"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    app:layout_constraintEnd_toStartOf="@+id/accountsLastNameTextField"
+                    app:layout_constraintStart_toEndOf="@+id/accountsFirstNameTextField"
+                    app:layout_constraintTop_toBottomOf="@+id/accountsNameTextView"
+                    tools:ignore="Autofill,TextContrastCheck" />
+
+                <EditText
+                    android:id="@+id/accountsLastNameTextField"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:ems="10"
+                    android:hint="@string/accountLastNameHint"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:text=""
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/accountsMiddleInitialTextField"
+                    app:layout_constraintTop_toBottomOf="@+id/accountsNameTextView"
+                    tools:ignore="Autofill,SpeakableTextPresentCheck,TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/accountsDOBTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="12dp"
+                    android:textSize="16dp"
+                    android:text="@string/accountsDOBTextView"
+                    app:layout_constraintBottom_toTopOf="@+id/accountsDateOfBirthTextField"
+                    app:layout_constraintStart_toStartOf="@+id/accountsDateOfBirthTextField"
+                    app:layout_constraintTop_toBottomOf="@+id/accountsFirstNameTextField" />
+
+                <EditText
+                    android:id="@+id/accountsDateOfBirthTextField"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:hint="@string/AccountsDateOfBirthHint"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:text="@string/addressDateOfBirthTextField"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/accountsFirstNameTextField"
+                    app:layout_constraintEnd_toStartOf="@+id/accountsSSNTextField"
+                    tools:ignore="TextContrastCheck,TextFields" />
+
+                <TextView
+                    android:id="@+id/accountsSSNTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16dp"
+                    android:text="@string/accountsSSNTextView"
+                    app:layout_constraintBottom_toTopOf="@+id/accountsSSNTextField"
+                    app:layout_constraintStart_toStartOf="@+id/accountsSSNTextField"
+                    app:layout_constraintTop_toBottomOf="@+id/accountsFirstNameTextField" />
+
+                <EditText
+                    android:id="@+id/accountsSSNTextField"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:ems="10"
+                    android:hint="@string/accountsSSNHint"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:text="@string/accountsSSNTextField"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/accountsDateOfBirthTextField"
+                    app:layout_constraintTop_toBottomOf="@+id/accountsLastNameTextField"
+                    tools:ignore="Autofill,SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/accountsAddressTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16dp"
+                    android:text="@string/accountsAddressTextView"
+                    app:layout_constraintBottom_toTopOf="@+id/accountsAddressTextField"
+                    app:layout_constraintStart_toStartOf="@+id/accountsAddressTextField"
+                    app:layout_constraintTop_toBottomOf="@+id/accountsDateOfBirthTextField" />
+
+                <EditText
+                    android:id="@+id/accountsAddressTextField"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:hint="@string/addressTextFieldHint"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:text="@string/accountsAddressTextField"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/accountsDateOfBirthTextField"
+                    tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
+
+                <EditText
+                    android:id="@+id/cityTextField"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:hint="@string/cityTextFieldHint"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:text="@string/cityTextField"
+                    app:layout_constraintEnd_toStartOf="@+id/stateTextField"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/accountsAddressTextField"
+                    tools:ignore="TextContrastCheck" />
+
+                <EditText
+                    android:id="@+id/stateTextField"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:hint="@string/stateTextFieldHint"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:text="@string/stateTextField"
+                    app:layout_constraintEnd_toStartOf="@+id/zipCodeTextField"
+                    app:layout_constraintStart_toEndOf="@+id/cityTextField"
+                    app:layout_constraintTop_toBottomOf="@+id/accountsAddressTextField"
+                    tools:ignore="TextContrastCheck" />
+
+                <EditText
+                    android:id="@+id/zipCodeTextField"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:hint="@string/zipCodeTextFieldHint"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:text="@string/zipCodeTextField"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/stateTextField"
+                    app:layout_constraintTop_toBottomOf="@+id/accountsAddressTextField"
+                    tools:ignore="TextContrastCheck" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
     <LinearLayout
         android:id="@+id/imageButtonLayout"
         android:layout_width="409dp"
