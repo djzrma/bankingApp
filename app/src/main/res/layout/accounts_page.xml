@@ -65,8 +65,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
-                    android:textSize="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/accountsNameTextView"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toTopOf="@+id/accountsFirstNameTextField"
                     app:layout_constraintStart_toStartOf="@+id/accountsFirstNameTextField"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -123,9 +124,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
-                    android:layout_marginTop="12dp"
-                    android:textSize="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/accountsDOBTextView"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toTopOf="@+id/accountsDateOfBirthTextField"
                     app:layout_constraintStart_toStartOf="@+id/accountsDateOfBirthTextField"
                     app:layout_constraintTop_toBottomOf="@+id/accountsFirstNameTextField" />
@@ -143,9 +144,9 @@
                     android:inputType="text"
                     android:minHeight="48dp"
                     android:text="@string/addressDateOfBirthTextField"
+                    app:layout_constraintEnd_toStartOf="@+id/accountsSSNTextField"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/accountsFirstNameTextField"
-                    app:layout_constraintEnd_toStartOf="@+id/accountsSSNTextField"
                     tools:ignore="TextContrastCheck,TextFields" />
 
                 <TextView
@@ -153,9 +154,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
-                    android:layout_marginTop="10dp"
-                    android:textSize="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/accountsSSNTextView"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toTopOf="@+id/accountsSSNTextField"
                     app:layout_constraintStart_toStartOf="@+id/accountsSSNTextField"
                     app:layout_constraintTop_toBottomOf="@+id/accountsFirstNameTextField" />
@@ -181,9 +182,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
-                    android:layout_marginTop="10dp"
-                    android:textSize="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/accountsAddressTextView"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toTopOf="@+id/accountsAddressTextField"
                     app:layout_constraintStart_toStartOf="@+id/accountsAddressTextField"
                     app:layout_constraintTop_toBottomOf="@+id/accountsDateOfBirthTextField" />
@@ -207,58 +208,68 @@
                     tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
 
                 <EditText
-                    android:id="@+id/cityTextField"
+                    android:id="@+id/accountsCityTextField"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginEnd="16dp"
                     android:autofillHints=""
                     android:ems="10"
                     android:hint="@string/cityTextFieldHint"
                     android:inputType="text"
                     android:minHeight="48dp"
-                    android:text="@string/cityTextField"
-                    app:layout_constraintEnd_toStartOf="@+id/stateTextField"
+                    android:text="@string/accountsCityTextField"
+                    app:layout_constraintEnd_toStartOf="@+id/accountsStateTextField"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/accountsAddressTextField"
                     tools:ignore="TextContrastCheck" />
 
                 <EditText
-                    android:id="@+id/stateTextField"
+                    android:id="@+id/accountsStateTextField"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginEnd="16dp"
                     android:autofillHints=""
                     android:ems="10"
                     android:hint="@string/stateTextFieldHint"
                     android:inputType="text"
                     android:minHeight="48dp"
-                    android:text="@string/stateTextField"
-                    app:layout_constraintEnd_toStartOf="@+id/zipCodeTextField"
-                    app:layout_constraintStart_toEndOf="@+id/cityTextField"
+                    android:text="@string/accountsStateTextField"
+                    app:layout_constraintEnd_toStartOf="@+id/accountsZipCodeTextField"
+                    app:layout_constraintStart_toEndOf="@+id/accountsCityTextField"
                     app:layout_constraintTop_toBottomOf="@+id/accountsAddressTextField"
                     tools:ignore="TextContrastCheck" />
 
                 <EditText
-                    android:id="@+id/zipCodeTextField"
+                    android:id="@+id/accountsZipCodeTextField"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginEnd="16dp"
                     android:autofillHints=""
                     android:ems="10"
                     android:hint="@string/zipCodeTextFieldHint"
                     android:inputType="text"
                     android:minHeight="48dp"
-                    android:text="@string/zipCodeTextField"
+                    android:text="@string/accountsZipCodeTextField"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/stateTextField"
+                    app:layout_constraintStart_toEndOf="@+id/accountsStateTextField"
                     app:layout_constraintTop_toBottomOf="@+id/accountsAddressTextField"
                     tools:ignore="TextContrastCheck" />
+
+                <Button
+                    android:id="@+id/accountsCreateAccountButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/accountsCreateAccountButton"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/accountsZipCodeTextField" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
@@ -305,10 +316,20 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/settingsImageButton"
+                app:layout_constraintEnd_toStartOf="@+id/transferImageButton"
                 app:layout_constraintStart_toEndOf="@+id/homeImageButton"
                 app:srcCompat="@drawable/ic_action_accounts"
                 tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck,ImageContrastCheck" />
+
+            <ImageButton
+                android:id="@+id/transferImageButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/settingsImageButton"
+                app:layout_constraintStart_toEndOf="@+id/accountsImageButton"
+                app:srcCompat="@drawable/ic_action_transfer"
+                tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
             <ImageButton
                 android:id="@+id/settingsImageButton"
@@ -316,7 +337,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/accountsImageButton"
+                app:layout_constraintStart_toEndOf="@+id/transferImageButton"
                 app:srcCompat="@drawable/ic_action_settings"
                 tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck,TouchTargetSizeCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>

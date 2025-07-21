@@ -49,4 +49,11 @@
     <string name="accountsSSNTextView">Social Security Number</string>
     <string name="accountsAddressTextField" />
     <string name="accountsAddressTextView">Address</string>
+    <string name="accountsCityTextField" />
+    <string name="accountsStateTextField" />
+    <string name="accountsZipCodeTextField" />
+    <string name="settingsTempString">This Screen will include options to make adjustments to a user\'s profile. This page may be replaced with a different feature, as we can include this as a dropdown option for the profile icon in the top right corner of the main menu.</string>
+    <string name="transferTempString">This page will include options for sending and receiving money to/from other users.</string>
+    <string name="createAccountButton">Create Account</string>
+    <string name="accountsCreateAccountButton">Create Account</string>
 </resources>

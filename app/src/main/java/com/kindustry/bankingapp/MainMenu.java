@@ -25,6 +25,7 @@ public class MainMenu extends AppCompatActivity {
             return insets;
         });
         accountsActivityButton();
+        transferActivityButton();
         settingsActivityButton();
         activitySwitchMessage();
     }
@@ -38,6 +39,21 @@ public class MainMenu extends AppCompatActivity {
                 Intent intent = new Intent(MainMenu.this, Accounts.class);
                 String passedMessage = "You are now on the Accounts Screen";
                 intent.putExtra("accountsMessage", passedMessage);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+    }
+
+    //method to switch to Transfer Activity
+    private void transferActivityButton(){
+        ImageButton transferButton = findViewById(R.id.transferImageButton);
+        transferButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainMenu.this, Transfer.class);
+                String passedMessage = "You are now on the Transfer Screen";
+                intent.putExtra("transferMessage", passedMessage);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }

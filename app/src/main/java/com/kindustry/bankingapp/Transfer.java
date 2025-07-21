@@ -12,19 +12,20 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class Accounts extends AppCompatActivity {
+public class Transfer extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.accounts_page);
+        setContentView(R.layout.transfer_page);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
         mainMenuActivityButton();
-        transferActivityButton();
+        accountsActivityButton();
         settingsActivityButton();
         activitySwitchMessage();
     }
@@ -35,7 +36,7 @@ public class Accounts extends AppCompatActivity {
         mainMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Accounts.this, MainMenu.class);
+                Intent intent = new Intent(Transfer.this, MainMenu.class);
                 String passedMessage = "You are now at the Main Menu";
                 intent.putExtra("mainMenuMessage", passedMessage);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -44,15 +45,15 @@ public class Accounts extends AppCompatActivity {
         });
     }
 
-    //method to switch to Transfer Activity
-    private void transferActivityButton(){
-        ImageButton transferButton = findViewById(R.id.transferImageButton);
-        transferButton.setOnClickListener(new View.OnClickListener() {
+    //method to switch to Accounts Activity
+    private void accountsActivityButton(){
+        ImageButton accountsButton = findViewById(R.id.accountsImageButton);
+        accountsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Accounts.this, Transfer.class);
-                String passedMessage = "You are now on the Transfer Screen";
-                intent.putExtra("transferMessage", passedMessage);
+                Intent intent = new Intent(Transfer.this, Accounts.class);
+                String passedMessage = "You are now on the Accounts Screen";
+                intent.putExtra("accountsMessage", passedMessage);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
@@ -65,7 +66,7 @@ public class Accounts extends AppCompatActivity {
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Accounts.this, Settings.class);
+                Intent intent = new Intent(Transfer.this, Settings.class);
                 String passedMessage = "You are now on the Settings Screen";
                 intent.putExtra("settingsMessage", passedMessage);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -78,7 +79,7 @@ public class Accounts extends AppCompatActivity {
     private void activitySwitchMessage(){
         Intent intent = getIntent();
         TextView message = findViewById(R.id.activitySwitchConfirmation);
-        String tempString = intent.getStringExtra("accountsMessage");
+        String tempString = intent.getStringExtra("transferMessage");
         message.setText(tempString);
     }
 }
