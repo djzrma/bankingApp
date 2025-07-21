@@ -56,4 +56,5 @@
     <string name="transferTempString">This page will include options for sending and receiving money to/from other users.</string>
     <string name="createAccountButton">Create Account</string>
     <string name="accountsCreateAccountButton">Create Account</string>
+    <string name="loginTempString">This is the login screen, behavior must still be added. Click \"Sign In\" to proceed to the main menu.</string>
 </resources>
