@@ -27,20 +27,24 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="72dp"
-        android:layout_marginBottom="100dp"
-        app:layout_constraintTop_toBottomOf="@id/transferTempString"
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toTopOf="@id/imageButtonLayout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/transferTempString">
 
         <LinearLayout
-            android:orientation="vertical"
-            android:padding="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <!-- Display Name -->
-            <TextView android:text="Display Name"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Display Name" />
+
             <EditText
                 android:id="@+id/nameInput"
                 android:layout_width="match_parent"
@@ -52,29 +56,32 @@
                 android:id="@+id/notificationsSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Enable Notifications"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="16dp"
+                android:text="Enable Notifications" />
 
             <!-- Dark Mode -->
             <Switch
                 android:id="@+id/darkModeSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dark Mode"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="16dp"
+                android:text="Dark Mode" />
 
             <!-- Auto Login -->
             <Switch
                 android:id="@+id/autoLoginSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Enable Auto-Login"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="16dp"
+                android:text="Enable Auto-Login" />
 
             <!-- Preferred Currency -->
             <TextView
-                android:text="Preferred Currency"
-                android:layout_marginTop="16dp"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Preferred Currency" />
+
             <Spinner
                 android:id="@+id/currencySpinner"
                 android:layout_width="match_parent"
@@ -85,8 +92,20 @@
                 android:id="@+id/saveButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Save Settings"
-                android:layout_marginTop="24dp" />
+                android:layout_marginTop="24dp"
+                android:text="Save Settings" />
+
+            <Button
+                android:id="@+id/logoutButton"
+                android:layout_width="128dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="100dp"
+                android:backgroundTint="#E91E1E"
+                android:text="@string/logoutButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
         </LinearLayout>
 
     </ScrollView>

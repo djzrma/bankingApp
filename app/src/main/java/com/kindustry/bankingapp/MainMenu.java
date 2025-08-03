@@ -42,21 +42,18 @@ public class MainMenu extends AppCompatActivity {
         ImageButton accounts = findViewById(R.id.accountsImageButton);
         accounts.setOnClickListener(v -> {
             Intent intent = new Intent(MainMenu.this, Accounts.class);
-            Toast.makeText(MainMenu.this, "Now on Accounts Screen", Toast.LENGTH_LONG).show();
             startActivity(intent);
         });
 
         ImageButton transfer = findViewById(R.id.transferImageButton);
         transfer.setOnClickListener(v -> {
             Intent intent = new Intent(MainMenu.this, Transfer.class);
-            Toast.makeText(MainMenu.this, "Now on Transfer Screen", Toast.LENGTH_LONG).show();
             startActivity(intent);
         });
 
         ImageButton settings = findViewById(R.id.settingsImageButton);
         settings.setOnClickListener(v -> {
             Intent intent = new Intent(MainMenu.this, Settings.class);
-            Toast.makeText(MainMenu.this, "Now on Settings Screen", Toast.LENGTH_LONG).show();
             startActivity(intent);
         });
     }

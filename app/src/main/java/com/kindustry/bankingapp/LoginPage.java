@@ -25,13 +25,10 @@ public class LoginPage extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        signInButtonAction();
-        createAccountButtonAction();
+        setupNavigation();
     }
 
-    // method call for sign in button
-    // switches activity to MainMenu
-    private void signInButtonAction() {
+    private void setupNavigation() {
         Button signInButton = findViewById(R.id.signInButton);
         signInButton.setOnClickListener(new View.OnClickListener() {
 
@@ -44,15 +41,21 @@ public class LoginPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
 
-    private void createAccountButtonAction() {
         Button createAccountButton = findViewById(R.id.createAnAccountButton);
         createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginPage.this, CreateAccount.class);
-                Toast.makeText(LoginPage.this, "Create an Account", Toast.LENGTH_LONG).show();
+                startActivity(intent);
+            }
+        });
+
+        Button forgotPasswordButton = findViewById(R.id.forgotPasswordButton);
+        forgotPasswordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginPage.this, ForgotPassword.class);
                 startActivity(intent);
             }
         });

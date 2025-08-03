@@ -44,7 +44,6 @@
         android:layout_height="match_parent"
         android:layout_marginTop="64dp"
         android:layout_marginBottom="64dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageButtonLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/accountsTitleLayout">

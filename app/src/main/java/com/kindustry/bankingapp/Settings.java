@@ -3,6 +3,7 @@ package com.kindustry.bankingapp;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -27,6 +28,7 @@ public class Settings extends AppCompatActivity {
 
         setupViews();
         loadSettings();
+        logoutButtonAction();
         setupNavigation();
     }
 
@@ -82,25 +84,34 @@ public class Settings extends AppCompatActivity {
         Toast.makeText(this, "Settings saved", Toast.LENGTH_SHORT).show();
     }
 
+    private void logoutButtonAction(){
+        Button logoutButton = findViewById(R.id.logoutButton);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Settings.this, LoginPage.class);
+                Toast.makeText(Settings.this, "Successfully Logged Out!", Toast.LENGTH_LONG).show();
+                startActivity(intent);
+            }
+        });
+    }
+
     private void setupNavigation() {
         ImageButton home = findViewById(R.id.homeImageButton);
         home.setOnClickListener(v -> {
             Intent intent = new Intent(Settings.this, MainMenu.class);
-            Toast.makeText(Settings.this, "Now on Main Menu Screen", Toast.LENGTH_LONG).show();
             startActivity(intent);
         });
 
         ImageButton accounts = findViewById(R.id.accountsImageButton);
         accounts.setOnClickListener(v -> {
             Intent intent = new Intent(Settings.this, Accounts.class);
-            Toast.makeText(Settings.this, "Now on Accounts Screen", Toast.LENGTH_LONG).show();
             startActivity(intent);
         });
 
         ImageButton transfer = findViewById(R.id.transferImageButton);
         transfer.setOnClickListener(v -> {
             Intent intent = new Intent(Settings.this, Transfer.class);
-            Toast.makeText(Settings.this, "Now on Transfer Screen", Toast.LENGTH_LONG).show();
             startActivity(intent);
         });
 

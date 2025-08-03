@@ -83,7 +83,6 @@ public class Accounts extends AppCompatActivity {
         ImageButton home = findViewById(R.id.homeImageButton);
         home.setOnClickListener(v -> {
             Intent intent = new Intent(Accounts.this, MainMenu.class);
-            Toast.makeText(Accounts.this, "Now on Main Menu Screen", Toast.LENGTH_LONG).show();
             startActivity(intent);
         });
 
@@ -95,14 +94,12 @@ public class Accounts extends AppCompatActivity {
         ImageButton transfer = findViewById(R.id.transferImageButton);
         transfer.setOnClickListener(v -> {
             Intent intent = new Intent(Accounts.this, Transfer.class);
-            Toast.makeText(Accounts.this, "Now on Transfer Screen", Toast.LENGTH_LONG).show();
             startActivity(intent);
         });
 
         ImageButton settings = findViewById(R.id.settingsImageButton);
         settings.setOnClickListener(v -> {
             Intent intent = new Intent(Accounts.this, Settings.class);
-            Toast.makeText(Accounts.this, "Now on Settings Screen", Toast.LENGTH_LONG).show();
             startActivity(intent);
         });
     }

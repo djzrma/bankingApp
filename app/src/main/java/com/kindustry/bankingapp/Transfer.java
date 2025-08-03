@@ -31,14 +31,12 @@ public class Transfer extends AppCompatActivity {
         ImageButton home = findViewById(R.id.homeImageButton);
         home.setOnClickListener(v -> {
             Intent intent = new Intent(Transfer.this, MainMenu.class);
-            Toast.makeText(Transfer.this, "Now on Main Menu Screen", Toast.LENGTH_LONG).show();
             startActivity(intent);
         });
 
         ImageButton accounts = findViewById(R.id.accountsImageButton);
         accounts.setOnClickListener(v -> {
             Intent intent = new Intent(Transfer.this, Accounts.class);
-            Toast.makeText(Transfer.this, "Now on Accounts Screen", Toast.LENGTH_LONG).show();
             startActivity(intent);
         });
 
@@ -50,7 +48,6 @@ public class Transfer extends AppCompatActivity {
         ImageButton settings = findViewById(R.id.settingsImageButton);
         settings.setOnClickListener(v -> {
             Intent intent = new Intent(Transfer.this, Settings.class);
-            Toast.makeText(Transfer.this, "Now on Settings Screen", Toast.LENGTH_LONG).show();
             startActivity(intent);
         });
     }
