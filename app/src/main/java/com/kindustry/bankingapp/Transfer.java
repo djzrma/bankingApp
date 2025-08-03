@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,62 +25,33 @@ public class Transfer extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        mainMenuActivityButton();
-        accountsActivityButton();
-        settingsActivityButton();
-        activitySwitchMessage();
+        setupNavigation();
     }
-
-    //method to switch to mainMenu Activity
-    private void mainMenuActivityButton(){
-        ImageButton mainMenuButton = findViewById(R.id.homeImageButton);
-        mainMenuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Transfer.this, MainMenu.class);
-                String passedMessage = "You are now at the Main Menu";
-                intent.putExtra("mainMenuMessage", passedMessage);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
+    private void setupNavigation() {
+        ImageButton home = findViewById(R.id.homeImageButton);
+        home.setOnClickListener(v -> {
+            Intent intent = new Intent(Transfer.this, MainMenu.class);
+            Toast.makeText(Transfer.this, "Now on Main Menu Screen", Toast.LENGTH_LONG).show();
+            startActivity(intent);
         });
-    }
 
-    //method to switch to Accounts Activity
-    private void accountsActivityButton(){
-        ImageButton accountsButton = findViewById(R.id.accountsImageButton);
-        accountsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Transfer.this, Accounts.class);
-                String passedMessage = "You are now on the Accounts Screen";
-                intent.putExtra("accountsMessage", passedMessage);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
+        ImageButton accounts = findViewById(R.id.accountsImageButton);
+        accounts.setOnClickListener(v -> {
+            Intent intent = new Intent(Transfer.this, Accounts.class);
+            Toast.makeText(Transfer.this, "Now on Accounts Screen", Toast.LENGTH_LONG).show();
+            startActivity(intent);
         });
-    }
 
-    //method to switch to Settings Activity
-    private void settingsActivityButton(){
-        ImageButton settingsButton = findViewById(R.id.settingsImageButton);
-        settingsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Transfer.this, Settings.class);
-                String passedMessage = "You are now on the Settings Screen";
-                intent.putExtra("settingsMessage", passedMessage);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
+        ImageButton transfer = findViewById(R.id.transferImageButton);
+        transfer.setOnClickListener(v -> {
+            // Already on Transfer
         });
-    }
 
-    //method to display activity switch confirmation message
-    private void activitySwitchMessage(){
-        Intent intent = getIntent();
-        TextView message = findViewById(R.id.activitySwitchConfirmation);
-        String tempString = intent.getStringExtra("transferMessage");
-        message.setText(tempString);
+        ImageButton settings = findViewById(R.id.settingsImageButton);
+        settings.setOnClickListener(v -> {
+            Intent intent = new Intent(Transfer.this, Settings.class);
+            Toast.makeText(Transfer.this, "Now on Settings Screen", Toast.LENGTH_LONG).show();
+            startActivity(intent);
+        });
     }
 }

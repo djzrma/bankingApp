@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,11 +26,12 @@ public class LoginPage extends AppCompatActivity {
             return insets;
         });
         signInButtonAction();
+        createAccountButtonAction();
     }
 
     // method call for sign in button
     // switches activity to MainMenu
-    private void signInButtonAction(){
+    private void signInButtonAction() {
         Button signInButton = findViewById(R.id.signInButton);
         signInButton.setOnClickListener(new View.OnClickListener() {
 
@@ -44,11 +46,15 @@ public class LoginPage extends AppCompatActivity {
         });
     }
 
-    //method to display activity switch confirmation message
-    private void activitySwitchMessage(){
-        Intent intent = getIntent();
-        TextView message = findViewById(R.id.activitySwitchConfirmation);
-        String tempString = intent.getStringExtra("loginMessage");
-        message.setText(tempString);
+    private void createAccountButtonAction() {
+        Button createAccountButton = findViewById(R.id.createAnAccountButton);
+        createAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginPage.this, CreateAccount.class);
+                Toast.makeText(LoginPage.this, "Create an Account", Toast.LENGTH_LONG).show();
+                startActivity(intent);
+            }
+        });
     }
 }

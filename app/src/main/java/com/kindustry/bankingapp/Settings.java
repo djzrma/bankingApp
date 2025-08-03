@@ -1,85 +1,114 @@
 package com.kindustry.bankingapp;
 
 import android.content.Intent;
-import android.media.Image;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
+import android.widget.Spinner;
+import android.widget.ArrayAdapter;
+import android.widget.Switch;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class Settings extends AppCompatActivity {
+
+    private EditText nameInput;
+    private Switch notificationsSwitch, darkModeSwitch, autoLoginSwitch;
+    private Spinner currencySpinner;
+    private Button saveButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.settings_page);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-        mainMenuActivityButton();
-        accountsActivityButton();
-        transferActivityButton();
-        activitySwitchMessage();
+
+        setupViews();
+        loadSettings();
+        setupNavigation();
     }
 
-    //method to switch to mainMenu Activity
-    private void mainMenuActivityButton(){
-        ImageButton mainMenuButton = findViewById(R.id.homeImageButton);
-        mainMenuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Settings.this, MainMenu.class);
-                String passedMessage = "You are now at the Main Menu";
-                intent.putExtra("mainMenuMessage", passedMessage);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
+    private void setupViews() {
+        nameInput = findViewById(R.id.nameInput);
+        notificationsSwitch = findViewById(R.id.notificationsSwitch);
+        darkModeSwitch = findViewById(R.id.darkModeSwitch);
+        autoLoginSwitch = findViewById(R.id.autoLoginSwitch);
+        currencySpinner = findViewById(R.id.currencySpinner);
+        saveButton = findViewById(R.id.saveButton);
+
+        // Currency spinner options
+        String[] currencies = {"USD", "EUR", "GBP"};
+        ArrayAdapter<String> currencyAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, currencies);
+        currencyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        currencySpinner.setAdapter(currencyAdapter);
+
+        saveButton.setOnClickListener(v -> saveSettings());
     }
 
-    //method to switch to Accounts Activity
-    private void accountsActivityButton(){
-        ImageButton accountsButton = findViewById(R.id.accountsImageButton);
-        accountsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Settings.this, Accounts.class);
-                String passedMessage = "You are now on the Accounts Screen";
-                intent.putExtra("accountsMessage", passedMessage);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
+    private void loadSettings() {
+        SharedPreferences prefs = getSharedPreferences("UserSettings", MODE_PRIVATE);
+
+        nameInput.setText(prefs.getString("displayName", ""));
+        notificationsSwitch.setChecked(prefs.getBoolean("notificationsEnabled", false));
+        darkModeSwitch.setChecked(prefs.getBoolean("darkMode", false));
+        autoLoginSwitch.setChecked(prefs.getBoolean("autoLogin", false));
+
+        String currency = prefs.getString("currency", "USD");
+        switch (currency) {
+            case "EUR":
+                currencySpinner.setSelection(1);
+                break;
+            case "GBP":
+                currencySpinner.setSelection(2);
+                break;
+            default:
+                currencySpinner.setSelection(0);
+        }
     }
 
-    //method to switch to Transfer Activity
-    private void transferActivityButton(){
-        ImageButton transferButton = findViewById(R.id.transferImageButton);
-        transferButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Settings.this, Transfer.class);
-                String passedMessage = "You are now on the Transfer Screen";
-                intent.putExtra("transferMessage", passedMessage);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
+    private void saveSettings() {
+        SharedPreferences prefs = getSharedPreferences("UserSettings", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        editor.putString("displayName", nameInput.getText().toString());
+        editor.putBoolean("notificationsEnabled", notificationsSwitch.isChecked());
+        editor.putBoolean("darkMode", darkModeSwitch.isChecked());
+        editor.putBoolean("autoLogin", autoLoginSwitch.isChecked());
+        editor.putString("currency", currencySpinner.getSelectedItem().toString());
+
+        editor.apply();
+        Toast.makeText(this, "Settings saved", Toast.LENGTH_SHORT).show();
     }
 
-    //method to display activity switch confirmation message
-    private void activitySwitchMessage(){
-        Intent intent = getIntent();
-        TextView message = findViewById(R.id.activitySwitchConfirmation);
-        String tempString = intent.getStringExtra("settingsMessage");
-        message.setText(tempString);
+    private void setupNavigation() {
+        ImageButton home = findViewById(R.id.homeImageButton);
+        home.setOnClickListener(v -> {
+            Intent intent = new Intent(Settings.this, MainMenu.class);
+            Toast.makeText(Settings.this, "Now on Main Menu Screen", Toast.LENGTH_LONG).show();
+            startActivity(intent);
+        });
+
+        ImageButton accounts = findViewById(R.id.accountsImageButton);
+        accounts.setOnClickListener(v -> {
+            Intent intent = new Intent(Settings.this, Accounts.class);
+            Toast.makeText(Settings.this, "Now on Accounts Screen", Toast.LENGTH_LONG).show();
+            startActivity(intent);
+        });
+
+        ImageButton transfer = findViewById(R.id.transferImageButton);
+        transfer.setOnClickListener(v -> {
+            Intent intent = new Intent(Settings.this, Transfer.class);
+            Toast.makeText(Settings.this, "Now on Transfer Screen", Toast.LENGTH_LONG).show();
+            startActivity(intent);
+        });
+
+        ImageButton settings = findViewById(R.id.settingsImageButton);
+        settings.setOnClickListener(v -> {
+            // Already on Settings
+        });
     }
 }
+
+

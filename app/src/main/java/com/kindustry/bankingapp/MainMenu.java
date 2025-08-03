@@ -1,10 +1,11 @@
 package com.kindustry.bankingapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,72 +15,57 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainMenu extends AppCompatActivity {
 
+    private TextView greetingText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.main_menu);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        accountsActivityButton();
-        transferActivityButton();
-        settingsActivityButton();
-        activitySwitchMessage();
+
+        setupNavigation();
+        displayGreeting();
     }
 
-    //method to switch to Accounts Activity
-    private void accountsActivityButton(){
-        ImageButton accountsButton = findViewById(R.id.accountsImageButton);
-        accountsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainMenu.this, Accounts.class);
-                String passedMessage = "You are now on the Accounts Screen";
-                intent.putExtra("accountsMessage", passedMessage);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
+    private void setupNavigation() {
+        ImageButton home = findViewById(R.id.homeImageButton);
+        home.setOnClickListener(v -> {
+            // Already on Main Menu
+        });
+
+        ImageButton accounts = findViewById(R.id.accountsImageButton);
+        accounts.setOnClickListener(v -> {
+            Intent intent = new Intent(MainMenu.this, Accounts.class);
+            Toast.makeText(MainMenu.this, "Now on Accounts Screen", Toast.LENGTH_LONG).show();
+            startActivity(intent);
+        });
+
+        ImageButton transfer = findViewById(R.id.transferImageButton);
+        transfer.setOnClickListener(v -> {
+            Intent intent = new Intent(MainMenu.this, Transfer.class);
+            Toast.makeText(MainMenu.this, "Now on Transfer Screen", Toast.LENGTH_LONG).show();
+            startActivity(intent);
+        });
+
+        ImageButton settings = findViewById(R.id.settingsImageButton);
+        settings.setOnClickListener(v -> {
+            Intent intent = new Intent(MainMenu.this, Settings.class);
+            Toast.makeText(MainMenu.this, "Now on Settings Screen", Toast.LENGTH_LONG).show();
+            startActivity(intent);
         });
     }
 
-    //method to switch to Transfer Activity
-    private void transferActivityButton(){
-        ImageButton transferButton = findViewById(R.id.transferImageButton);
-        transferButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainMenu.this, Transfer.class);
-                String passedMessage = "You are now on the Transfer Screen";
-                intent.putExtra("transferMessage", passedMessage);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
-    }
+    private void displayGreeting() {
+        greetingText = findViewById(R.id.accountsTitle);
+        SharedPreferences prefs = getSharedPreferences("UserSettings", MODE_PRIVATE);
+        String displayName = prefs.getString("displayName", "User");
 
-    //method to switch to Settings Activity
-    private void settingsActivityButton(){
-        ImageButton settingsButton = findViewById(R.id.settingsImageButton);
-        settingsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainMenu.this, Settings.class);
-                String passedMessage = "You are now on the Settings Screen";
-                intent.putExtra("settingsMessage", passedMessage);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
-    }
-
-    //method to display activity switch confirmation message
-    private void activitySwitchMessage(){
-        Intent intent = getIntent();
-        TextView message = findViewById(R.id.activitySwitchConfirmation);
-        String tempString = intent.getStringExtra("mainMenuMessage");
-        message.setText(tempString);
+        greetingText.setText("Welcome, USERNAME HERE!");
     }
 }

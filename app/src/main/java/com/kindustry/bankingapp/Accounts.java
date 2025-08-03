@@ -3,82 +3,107 @@ package com.kindustry.bankingapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import androidx.activity.EdgeToEdge;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class Accounts extends AppCompatActivity {
+
+    private EditText etFullName, etEmail, etPhone, etAddress;
+    private Button btnSave;
+
+    private Business currentUser;
+    private BusinessDao businessDao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.accounts_page);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-        mainMenuActivityButton();
-        transferActivityButton();
-        settingsActivityButton();
-        activitySwitchMessage();
-    }
 
-    //method to switch to mainMenu Activity
-    private void mainMenuActivityButton(){
-        ImageButton mainMenuButton = findViewById(R.id.homeImageButton);
-        mainMenuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Accounts.this, MainMenu.class);
-                String passedMessage = "You are now at the Main Menu";
-                intent.putExtra("mainMenuMessage", passedMessage);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+        etFullName = findViewById(R.id.etFullName);
+        etEmail = findViewById(R.id.etEmail);
+        etPhone = findViewById(R.id.etPhone);
+        etAddress = findViewById(R.id.etAddress);
+        btnSave = findViewById(R.id.btnSave);
+
+        BusinessDatabase db = BusinessDatabase.getDatabase(this);
+        businessDao = db.businessDao();
+
+        // Load or create user
+        new Thread(() -> {
+            currentUser = businessDao.getUserById(1);
+            if (currentUser == null) {
+                Business newUser = new Business("defaultUser", "1234", "", "", "", "");
+                long newId = businessDao.insert(newUser);
+                currentUser = businessDao.getUserById((int) newId);
             }
-        });
+            runOnUiThread(this::populateForm);
+        }).start();
+
+        setupNavigation();
+        btnSave.setOnClickListener(v -> saveUserInfo());
     }
 
-    //method to switch to Transfer Activity
-    private void transferActivityButton(){
-        ImageButton transferButton = findViewById(R.id.transferImageButton);
-        transferButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Accounts.this, Transfer.class);
-                String passedMessage = "You are now on the Transfer Screen";
-                intent.putExtra("transferMessage", passedMessage);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
+    private void populateForm() {
+        if (currentUser == null) return;
+        etFullName.setText(currentUser.fullName);
+        etEmail.setText(currentUser.email);
+        etPhone.setText(currentUser.phone);
+        etAddress.setText(currentUser.address);
     }
 
-    //method to switch to Settings Activity
-    private void settingsActivityButton(){
-        ImageButton settingsButton = findViewById(R.id.settingsImageButton);
-        settingsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Accounts.this, Settings.class);
-                String passedMessage = "You are now on the Settings Screen";
-                intent.putExtra("settingsMessage", passedMessage);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
+    private void saveUserInfo() {
+        if (currentUser == null) return;
+
+        currentUser.fullName = etFullName.getText().toString();
+        currentUser.email = etEmail.getText().toString();
+        currentUser.phone = etPhone.getText().toString();
+        currentUser.address = etAddress.getText().toString();
+
+        new Thread(() -> {
+            int rows = businessDao.update(currentUser);  // change DAO to return int
+            runOnUiThread(() -> {
+                if (rows > 0) {
+                    Toast.makeText(Accounts.this, "Account updated successfully!", Toast.LENGTH_SHORT).show();
+                    // Navigate back to Main Menu
+                    Intent intent = new Intent(Accounts.this, MainMenu.class);
+                    startActivity(intent);
+                    finish();  // close this activity
+                } else {
+                    Toast.makeText(Accounts.this, "Update failed", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }).start();
     }
 
-    //method to display activity switch confirmation message
-    private void activitySwitchMessage(){
-        Intent intent = getIntent();
-        TextView message = findViewById(R.id.activitySwitchConfirmation);
-        String tempString = intent.getStringExtra("accountsMessage");
-        message.setText(tempString);
+    private void setupNavigation() {
+        ImageButton home = findViewById(R.id.homeImageButton);
+        home.setOnClickListener(v -> {
+            Intent intent = new Intent(Accounts.this, MainMenu.class);
+            Toast.makeText(Accounts.this, "Now on Main Menu Screen", Toast.LENGTH_LONG).show();
+            startActivity(intent);
+        });
+
+        ImageButton accounts = findViewById(R.id.accountsImageButton);
+        accounts.setOnClickListener(v -> {
+            // Already on Accounts
+        });
+
+        ImageButton transfer = findViewById(R.id.transferImageButton);
+        transfer.setOnClickListener(v -> {
+            Intent intent = new Intent(Accounts.this, Transfer.class);
+            Toast.makeText(Accounts.this, "Now on Transfer Screen", Toast.LENGTH_LONG).show();
+            startActivity(intent);
+        });
+
+        ImageButton settings = findViewById(R.id.settingsImageButton);
+        settings.setOnClickListener(v -> {
+            Intent intent = new Intent(Accounts.this, Settings.class);
+            Toast.makeText(Accounts.this, "Now on Settings Screen", Toast.LENGTH_LONG).show();
+            startActivity(intent);
+        });
     }
 }

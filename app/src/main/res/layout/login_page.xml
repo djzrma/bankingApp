@@ -110,25 +110,27 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/passwordTextField" />
 
-            <TextView
-                android:id="@+id/forgotPasswordTextField"
-                android:layout_width="0dp"
+            <Button
+                android:id="@+id/forgotPasswordButton"
+                android:layout_width="132dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
-                android:textSize="14sp"
-                android:text="@string/forgotPasswordTextView"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="24dp"
+                android:background="@android:color/transparent"
+                android:text="@string/forgotPasswordButton"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/signInButton" />
 
-            <TextView
-                android:id="@+id/forgotPasswordTextField2"
-                android:layout_width="0dp"
+            <Button
+                android:id="@+id/createAnAccountButton"
+                android:layout_width="132dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:textSize="14sp"
-                android:text="@string/createAnAccountTextView"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="2dp"
+                android:background="@android:color/transparent"
+                android:text="@string/createAnAccountButton"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/signInButton" />
 
@@ -142,7 +144,7 @@
                 android:text="@string/loginTempString"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextField2" />
+                app:layout_constraintTop_toBottomOf="@+id/createAnAccountButton" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>

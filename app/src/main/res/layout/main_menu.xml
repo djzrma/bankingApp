@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,130 +8,140 @@
     android:layout_height="match_parent"
     tools:context=".MainMenu">
 
-    <LinearLayout
-        android:id="@+id/appNameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:baselineAligned="false"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
+    <!-- Accounts Title -->
+    <TextView
+        android:id="@+id/accountsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Accounts"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+    <!-- Checkings Section -->
+    <TextView
+        android:id="@+id/checkingsLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Checkings Balance: $4,512.33"
+        android:textSize="18sp"
+        android:background="#FFF3E0"
+        android:padding="12dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/accountsTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp" />
 
-            <TextView
-                android:id="@+id/accountsTitleTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#C95527B0"
-                android:gravity="center"
-                android:text="@string/appNameTextView"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <!-- Savings Section -->
+    <TextView
+        android:id="@+id/savingsLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Savings Balance: $9,875.20"
+        android:textSize="18sp"
+        android:background="#E0F7FA"
+        android:padding="12dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/checkingsLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp" />
 
-            <ImageButton
-                android:id="@+id/profileImageButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-6dp"
-                android:layout_marginEnd="-4dp"
-                android:layout_marginBottom="-2dp"
-                app:layout_constraintBottom_toBottomOf="@+id/accountsTitleTextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/accountsTitleTextView"
-                app:srcCompat="@drawable/ic_action_profile"
-                tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+    <!-- Credit Lines Banner -->
+    <TextView
+        android:id="@+id/creditLinesBanner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CREDIT LINES"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:background="#D1C4E9"
+        android:padding="8dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/savingsLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-            <TextView
-                android:id="@+id/transferTempString"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="128dp"
-                android:gravity="center"
-                android:text="@string/mainMenuTempString"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/accountsTitleTextView" />
+    <!-- Credit Card Section -->
+    <TextView
+        android:id="@+id/creditCardLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Credit Card Balance: $1,245.67"
+        android:textSize="18sp"
+        android:background="#FCE4EC"
+        android:padding="12dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/creditLinesBanner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
+    <!-- Car Loan Section -->
+    <TextView
+        android:id="@+id/carLoanLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Car Loan Balance: $8,200.00"
+        android:textSize="18sp"
+        android:background="#E8F5E9"
+        android:padding="12dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/creditCardLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp" />
 
+    <!-- Bottom Navigation Buttons -->
     <LinearLayout
         android:id="@+id/imageButtonLayout"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0"
-        tools:ignore="NotSibling,RtlHardcoded">
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <ImageButton
+            android:id="@+id/homeImageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_action_home"
+            android:contentDescription="Home" />
 
-            <TextView
-                android:id="@+id/activitySwitchConfirmation"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:gravity="center"
-                android:text="@string/activitySwitchConfirmation"
-                app:layout_constraintBottom_toTopOf="@+id/accountsImageButton"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+        <ImageButton
+            android:id="@+id/accountsImageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_action_accounts"
+            android:contentDescription="Accounts" />
 
-            <ImageButton
-                android:id="@+id/homeImageButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/accountsImageButton"
-                app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_action_home"
-                tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+        <ImageButton
+            android:id="@+id/transferImageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_action_transfer"
+            android:contentDescription="Transfer" />
 
-            <ImageButton
-                android:id="@+id/accountsImageButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/transferImageButton"
-                app:layout_constraintStart_toEndOf="@+id/homeImageButton"
-                app:srcCompat="@drawable/ic_action_accounts"
-                tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck,ImageContrastCheck" />
-
-            <ImageButton
-                android:id="@+id/transferImageButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/settingsImageButton"
-                app:layout_constraintStart_toEndOf="@+id/accountsImageButton"
-                app:srcCompat="@drawable/ic_action_transfer"
-                tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
-
-            <ImageButton
-                android:id="@+id/settingsImageButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/transferImageButton"
-                app:srcCompat="@drawable/ic_action_settings"
-                tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck,TouchTargetSizeCheck" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+        <ImageButton
+            android:id="@+id/settingsImageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_action_settings"
+            android:contentDescription="Settings" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

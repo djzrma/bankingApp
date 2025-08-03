@@ -1,346 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Accounts">
 
-
-    <LinearLayout
-        android:id="@+id/accountsTitleLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
+    <!-- Title Bar -->
+    <TextView
+        android:id="@+id/accountsTitleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#C95527B0"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="Account Information"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/accountInfoScrollView">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/accountsTitleTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#C95527B0"
-                android:gravity="center"
-                android:text="@string/accountsTitleTextView"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
-
+    <!-- Scrollable Form -->
     <ScrollView
         android:id="@+id/accountInfoScrollView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="64dp"
         android:layout_marginBottom="64dp"
+        app:layout_constraintTop_toBottomOf="@id/accountsTitleTextView"
         app:layout_constraintBottom_toTopOf="@+id/imageButtonLayout"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/accountsTitleLayout">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
-            android:id="@+id/accountsInfoLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <!-- Full Name -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full Name"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/etFullName"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:hint="Enter full name"
+                android:minHeight="48dp" />
 
-                <TextView
-                    android:id="@+id/accountsNameTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/accountsNameTextView"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/accountsFirstNameTextField"
-                    app:layout_constraintStart_toStartOf="@+id/accountsFirstNameTextField"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <!-- Email -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
 
-                <EditText
-                    android:id="@+id/accountsFirstNameTextField"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:autofillHints=""
-                    android:ems="10"
-                    android:hint="@string/accountFirstNameHint"
-                    android:inputType="text"
-                    android:minHeight="48dp"
-                    android:text="@string/accountFirstNameTextField"
-                    app:layout_constraintEnd_toStartOf="@+id/accountsMiddleInitialTextField"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/accountsNameTextView"
-                    tools:ignore="TextContrastCheck" />
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="Enter email address"
+                android:minHeight="48dp" />
 
-                <EditText
-                    android:id="@+id/accountsMiddleInitialTextField"
-                    android:layout_width="48dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:autofillHints=""
-                    android:ems="10"
-                    android:hint="@string/accountsMiddleInitialHint"
-                    android:inputType="text"
-                    android:minHeight="48dp"
-                    app:layout_constraintEnd_toStartOf="@+id/accountsLastNameTextField"
-                    app:layout_constraintStart_toEndOf="@+id/accountsFirstNameTextField"
-                    app:layout_constraintTop_toBottomOf="@+id/accountsNameTextView"
-                    tools:ignore="Autofill,TextContrastCheck" />
+            <!-- Phone -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
 
-                <EditText
-                    android:id="@+id/accountsLastNameTextField"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:ems="10"
-                    android:hint="@string/accountLastNameHint"
-                    android:inputType="text"
-                    android:minHeight="48dp"
-                    android:text=""
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/accountsMiddleInitialTextField"
-                    app:layout_constraintTop_toBottomOf="@+id/accountsNameTextView"
-                    tools:ignore="Autofill,SpeakableTextPresentCheck,TextContrastCheck" />
+            <EditText
+                android:id="@+id/etPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:hint="Enter phone number"
+                android:minHeight="48dp" />
 
-                <TextView
-                    android:id="@+id/accountsDOBTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/accountsDOBTextView"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/accountsDateOfBirthTextField"
-                    app:layout_constraintStart_toStartOf="@+id/accountsDateOfBirthTextField"
-                    app:layout_constraintTop_toBottomOf="@+id/accountsFirstNameTextField" />
+            <!-- Address -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
 
-                <EditText
-                    android:id="@+id/accountsDateOfBirthTextField"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:autofillHints=""
-                    android:ems="10"
-                    android:hint="@string/AccountsDateOfBirthHint"
-                    android:inputType="text"
-                    android:minHeight="48dp"
-                    android:text="@string/addressDateOfBirthTextField"
-                    app:layout_constraintEnd_toStartOf="@+id/accountsSSNTextField"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/accountsFirstNameTextField"
-                    tools:ignore="TextContrastCheck,TextFields" />
+            <EditText
+                android:id="@+id/etAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter address"
+                android:minHeight="48dp" />
 
-                <TextView
-                    android:id="@+id/accountsSSNTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/accountsSSNTextView"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/accountsSSNTextField"
-                    app:layout_constraintStart_toStartOf="@+id/accountsSSNTextField"
-                    app:layout_constraintTop_toBottomOf="@+id/accountsFirstNameTextField" />
-
-                <EditText
-                    android:id="@+id/accountsSSNTextField"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:ems="10"
-                    android:hint="@string/accountsSSNHint"
-                    android:inputType="text"
-                    android:minHeight="48dp"
-                    android:text="@string/accountsSSNTextField"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/accountsDateOfBirthTextField"
-                    app:layout_constraintTop_toBottomOf="@+id/accountsLastNameTextField"
-                    tools:ignore="Autofill,SpeakableTextPresentCheck" />
-
-                <TextView
-                    android:id="@+id/accountsAddressTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/accountsAddressTextView"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/accountsAddressTextField"
-                    app:layout_constraintStart_toStartOf="@+id/accountsAddressTextField"
-                    app:layout_constraintTop_toBottomOf="@+id/accountsDateOfBirthTextField" />
-
-                <EditText
-                    android:id="@+id/accountsAddressTextField"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:autofillHints=""
-                    android:ems="10"
-                    android:hint="@string/addressTextFieldHint"
-                    android:inputType="text"
-                    android:minHeight="48dp"
-                    android:text="@string/accountsAddressTextField"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/accountsDateOfBirthTextField"
-                    tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
-
-                <EditText
-                    android:id="@+id/accountsCityTextField"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:autofillHints=""
-                    android:ems="10"
-                    android:hint="@string/cityTextFieldHint"
-                    android:inputType="text"
-                    android:minHeight="48dp"
-                    android:text="@string/accountsCityTextField"
-                    app:layout_constraintEnd_toStartOf="@+id/accountsStateTextField"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/accountsAddressTextField"
-                    tools:ignore="TextContrastCheck" />
-
-                <EditText
-                    android:id="@+id/accountsStateTextField"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:autofillHints=""
-                    android:ems="10"
-                    android:hint="@string/stateTextFieldHint"
-                    android:inputType="text"
-                    android:minHeight="48dp"
-                    android:text="@string/accountsStateTextField"
-                    app:layout_constraintEnd_toStartOf="@+id/accountsZipCodeTextField"
-                    app:layout_constraintStart_toEndOf="@+id/accountsCityTextField"
-                    app:layout_constraintTop_toBottomOf="@+id/accountsAddressTextField"
-                    tools:ignore="TextContrastCheck" />
-
-                <EditText
-                    android:id="@+id/accountsZipCodeTextField"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:autofillHints=""
-                    android:ems="10"
-                    android:hint="@string/zipCodeTextFieldHint"
-                    android:inputType="text"
-                    android:minHeight="48dp"
-                    android:text="@string/accountsZipCodeTextField"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/accountsStateTextField"
-                    app:layout_constraintTop_toBottomOf="@+id/accountsAddressTextField"
-                    tools:ignore="TextContrastCheck" />
-
-                <Button
-                    android:id="@+id/accountsCreateAccountButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:text="@string/accountsCreateAccountButton"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/accountsZipCodeTextField" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save"
+                android:layout_marginTop="32dp"
+                android:layout_gravity="center" />
         </LinearLayout>
     </ScrollView>
 
+    <!-- Bottom Navigation -->
     <LinearLayout
         android:id="@+id/imageButtonLayout"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0"
-        tools:ignore="NotSibling,RtlHardcoded">
+        app:layout_constraintStart_toStartOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <ImageButton
+            android:id="@+id/homeImageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_action_home"
+            android:contentDescription="@string/app_name" />
 
-            <TextView
-                android:id="@+id/activitySwitchConfirmation"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:gravity="center"
-                android:text="@string/activitySwitchConfirmation"
-                app:layout_constraintBottom_toTopOf="@+id/accountsImageButton"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+        <ImageButton
+            android:id="@+id/accountsImageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_action_accounts"
+            android:contentDescription="@string/app_name" />
 
-            <ImageButton
-                android:id="@+id/homeImageButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/accountsImageButton"
-                app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_action_home"
-                tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+        <ImageButton
+            android:id="@+id/transferImageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_action_transfer"
+            android:contentDescription="@string/app_name" />
 
-            <ImageButton
-                android:id="@+id/accountsImageButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/transferImageButton"
-                app:layout_constraintStart_toEndOf="@+id/homeImageButton"
-                app:srcCompat="@drawable/ic_action_accounts"
-                tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck,ImageContrastCheck" />
-
-            <ImageButton
-                android:id="@+id/transferImageButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/settingsImageButton"
-                app:layout_constraintStart_toEndOf="@+id/accountsImageButton"
-                app:srcCompat="@drawable/ic_action_transfer"
-                tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
-
-            <ImageButton
-                android:id="@+id/settingsImageButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/transferImageButton"
-                app:srcCompat="@drawable/ic_action_settings"
-                tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck,TouchTargetSizeCheck" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+        <ImageButton
+            android:id="@+id/settingsImageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_action_settings"
+            android:contentDescription="@string/app_name" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

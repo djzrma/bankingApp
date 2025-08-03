@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BankingApp">
         <activity
+            android:name=".CreateAccount"
+            android:exported="false" />
+        <activity
             android:name=".Transfer"
             android:exported="false" />
         <activity
